@@ -1,64 +1,90 @@
-#include <stdio.h>
 
 // Desafio de Xadrez - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 
+#include <stdio.h>
+
+
+void torre (int casas) {
+
+    if(casas > 0) {
+
+        torre(-- casas);
+        printf("Torre para Direita\n");
+    }
+} 
+
+void rainha (int casas2) {
+
+    if (casas2 > 0) {
+
+        rainha(-- casas2);
+        printf("Rainha para Esquerda\n");
+    }
+}
+
+void bispo (int casas3) {
+
+     if(casas3 > 0) { 
+       
+        for (int i = 0; i < 1; i++) {
+            printf ("Bispo Cima ");
+        
+        for(int j = 0; j < 1; j++){
+            printf ("Direita\n");
+        }
+       bispo (--casas3);
+        }
+    }
+
+}
+
+
 int main () {
 
+    int quantidade, quantidade2, quantidade3;
+    int cavalo;
 
-    //torre = reta 5 casas, bispo diagonal 5 casas, rainha 8 casas pra esquerda
+
+
+    //torre
+    printf("***Bem vindo ao Xadrez da Babi***\n");
+    printf("Digite quantas vezes quer mover sua Torre para direita\n");
+    scanf("%d", &quantidade);
+
+       torre(quantidade);
+
+
+    //rainha
+    printf("Digite quantas vezes quer mover sua Rainha para esquerda\n");
+    scanf("%d", &quantidade2);
+
+       rainha(quantidade2);
+
+
+       //bispo
+    printf("Digite quantas vezes quer mover seu Bispo\n");
+    scanf("%d", &quantidade3);
+
+       bispo(quantidade3);
     
-
-    int rainha = 0, bispo = 0, cavalo = 1;
-
-    for (int i = 0; i < 5; i++) 
-    {
-        printf("Torre para direita\n");
-    }
+//cavalo baixo baixo esquerda
     
-        printf("**PROXIMA PECA**\n");
+    printf("Digite quantas vezes quer mover seu Cavalo\n");
+    scanf("%d", &cavalo);
 
-
-    //parte do while - rainha 8 casas pra esquerda
-
-    while (rainha < 8)
-    {
-        printf("Rainha para esquerda\n");
-        rainha++;
-    }
-        
-    printf("**PROXIMA PECA**\n");
-
-    //do-while bispo diagonal 5
-
-
-    do 
-    {
-
-        printf("Bispo para Cima Direita\n");
-        bispo++;
-
-    } while (bispo < 5);
-
-
-    printf("**PROXIMA PECA**\n");
-
-    //cavalo baixo baixo esquerda
-    
     while (cavalo > 0)
     {
         for (int i = 0; i < 2; i++) {
-            printf("Cavalo para Baixo\n");
-
+            printf("Cavalo Cima, ");
         }
-
-        printf("Cavalo para Esquerda\n");
-        cavalo--;
+            printf("Direita\n");
+            --cavalo;
 
     }
 
 
-    return 0;
+
 }
